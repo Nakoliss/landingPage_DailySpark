@@ -1,9 +1,8 @@
 'use client';
 
 import { Translations } from '@/lib/i18n';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
+import TallyEmbed from './TallyEmbed';
 
 interface WaitlistCTAProps {
   translations: Translations['waitlist'];
@@ -11,19 +10,8 @@ interface WaitlistCTAProps {
 }
 
 export default function WaitlistCTA({ translations, waitlistUrl }: WaitlistCTAProps) {
-  const [email, setEmail] = useState('');
-  const [isValid, setIsValid] = useState(true);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailPattern.test(email)) {
-      setIsValid(true);
-      window.location.href = waitlistUrl;
-    } else {
-      setIsValid(false);
-    }
-  };
+
 
   return (
     <section id="waitlist" className="py-20 md:py-32 relative overflow-hidden">
@@ -49,35 +37,13 @@ export default function WaitlistCTA({ translations, waitlistUrl }: WaitlistCTAPr
             {translations.subtitle}
           </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10">
-            <div className="flex-1">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setIsValid(true);
-                }}
-                placeholder={translations.emailPlaceholder}
-                className={`w-full px-6 py-4 rounded-xl bg-white/10 border ${!isValid ? 'border-red-400' : 'border-white/20'
-                  } text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-400 backdrop-blur-sm transition-all`}
-                aria-label={translations.emailPlaceholder}
-                required
-              />
-              {!isValid && (
-                <p className="mt-2 text-sm text-red-300 text-left pl-2">Please enter a valid email address.</p>
-              )}
-            </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              className="px-8 py-4 rounded-xl bg-white text-primary-900 font-bold hover:bg-primary-50 transition-colors shadow-lg flex items-center justify-center gap-2"
-            >
-              {translations.button}
-              <Send className="w-4 h-4" />
-            </motion.button>
-          </form>
+          <div className="relative z-10">
+            <TallyEmbed
+              embedUrl={process.env.NEXT_PUBLIC_WAITLIST_EMBED_URL || ''}
+              fallbackUrl={process.env.NEXT_PUBLIC_WAITLIST_FALLBACK_URL || '#'}
+              fallbackButtonText={translations.button}
+            />
+          </div>
         </motion.div>
       </div>
     </section>
