@@ -5,6 +5,9 @@ export interface Translations {
     headline: string;
     subheadline: string;
     cta: string;
+    dailyInspiration: string;
+    morningBoost: string;
+    personalMessage: string;
   };
   benefits: {
     title: string;
@@ -41,14 +44,17 @@ export const translations: Record<Language, Translations> = {
   en: {
     hero: {
       headline: 'One personal boost every morning.',
-      subheadline: 'Receive a short, personal message + abstract background — bilingual (FR/EN) — save or share in one tap.',
+      subheadline: 'Receive a short, personal message + Stunning, high-definition nature photography that captures the emotional essence of your daily message — bilingual (FR/EN) — share in one tap.',
       cta: 'Get early access',
+      dailyInspiration: 'Daily Inspiration Reimagined',
+      morningBoost: 'Morning Boost',
+      personalMessage: 'Personal Message',
     },
     benefits: {
       title: 'Why DailySpark?',
       items: [
         'Personal tone – messages written just for you.',
-        'Bilingual FR / EN – morning boost in your language.',
+        'Bilingual FR / EN – boost in your language.',
         'Save or share in one tap – make it yours or spread the word.',
       ],
     },
@@ -60,7 +66,7 @@ export const translations: Record<Language, Translations> = {
       items: [
         {
           question: 'When will I start receiving messages?',
-          answer: 'We\'re launching the beta soon! Early access members will receive their first message within 1-2 weeks of sign-up.',
+          answer: "We're launching the beta soon! Early access members will receive their first message within 1-2 weeks of sign-up.",
         },
         {
           question: 'Can I change my language later?',
@@ -72,7 +78,7 @@ export const translations: Record<Language, Translations> = {
         },
         {
           question: 'How many messages per week?',
-          answer: 'You\'ll receive one personalized message every morning.',
+          answer: "You'll receive one personalized message every morning.",
         },
         {
           question: 'Can I unsubscribe anytime?',
@@ -99,8 +105,11 @@ export const translations: Record<Language, Translations> = {
   fr: {
     hero: {
       headline: 'Un boost personnel chaque matin.',
-      subheadline: 'Recevez un court message personnel + arrière-plan abstrait — bilingue (FR/EN) — sauvegardez ou partagez en un tap.',
+      subheadline: "Recevez un court message personnel + photographie de nature haute définition époustouflante qui capture l'essence émotionnelle de votre message quotidien — bilingue (FR/EN) — partagez en un tap.",
       cta: 'Obtenir un accès anticipé',
+      dailyInspiration: 'Inspiration quotidienne réinventée',
+      morningBoost: 'Boost du matin',
+      personalMessage: 'Message personnel',
     },
     benefits: {
       title: 'Pourquoi DailySpark?',
@@ -118,15 +127,15 @@ export const translations: Record<Language, Translations> = {
       items: [
         {
           question: 'Quand vais-je commencer à recevoir des messages?',
-          answer: 'Nous lançons la bêta bientôt! Les membres avec accès anticipé recevront leur premier message dans 1-2 semaines après l\'inscription.',
+          answer: "Nous lançons la bêta bientôt! Les membres avec accès anticipé recevront leur premier message dans 1-2 semaines après l'inscription.",
         },
         {
           question: 'Puis-je changer ma langue plus tard?',
-          answer: 'Oui, absolument! Vous pouvez basculer entre l\'anglais et le français à tout moment dans vos paramètres.',
+          answer: "Oui, absolument! Vous pouvez basculer entre l'anglais et le français à tout moment dans vos paramètres.",
         },
         {
           question: 'Est-ce gratuit pendant la bêta?',
-          answer: 'Oui, DailySpark est complètement gratuit pendant la période bêta. Nous voulons recueillir des commentaires et le rendre parfait pour vous.',
+          answer: "Oui, DailySpark est complètement gratuit pendant la période bêta. Nous voulons recueillir des commentaires et le rendre parfait pour vous.",
         },
         {
           question: 'Combien de messages par semaine?',
@@ -139,8 +148,8 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     waitlist: {
-      title: 'Rejoignez la liste d\'attente',
-      subtitle: 'Entrez votre email pour rejoindre la liste d\'attente et obtenir un accès anticipé.',
+      title: "Rejoignez la liste d'attente",
+      subtitle: "Entrez votre email pour rejoindre la liste d'attente et obtenir un accès anticipé.",
       emailPlaceholder: 'Entrez votre email',
       button: 'Obtenir un accès anticipé',
     },
@@ -155,4 +164,3 @@ export const translations: Record<Language, Translations> = {
     },
   },
 };
-

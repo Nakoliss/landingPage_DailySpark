@@ -8,14 +8,14 @@ process.stdout.write('\x1B[2J\x1B[0f');
 console.log('🚀 Starting Next.js development server...\n');
 
 // Start Next.js dev server
-const nextDev = spawn('npx', ['next', 'dev'], {
+const nextDev = spawn('npx', ['next', 'dev', '-p', '3001'], {
   stdio: 'inherit',
   shell: true,
 });
 
 // Wait a bit for the server to start, then open Chrome in incognito
 setTimeout(() => {
-  const url = 'http://localhost:3000';
+  const url = 'http://localhost:3001';
   
   if (platform() === 'win32') {
     // Windows: Use start command with chrome (works if Chrome is in PATH or registered)

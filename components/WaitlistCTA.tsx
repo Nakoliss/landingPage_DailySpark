@@ -2,6 +2,8 @@
 
 import { Translations } from '@/lib/i18n';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Send } from 'lucide-react';
 
 interface WaitlistCTAProps {
   translations: Translations['waitlist'];
@@ -17,8 +19,6 @@ export default function WaitlistCTA({ translations, waitlistUrl }: WaitlistCTAPr
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailPattern.test(email)) {
       setIsValid(true);
-      // TODO: Replace with actual Tally/Typeform/ConvertKit URL
-      // For now, redirect to placeholder
       window.location.href = waitlistUrl;
     } else {
       setIsValid(false);
@@ -26,41 +26,59 @@ export default function WaitlistCTA({ translations, waitlistUrl }: WaitlistCTAPr
   };
 
   return (
-    <section className="py-16 md:py-20">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center shadow-xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+    <section id="waitlist" className="py-20 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-primary-900">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-gray-900/0 via-primary-900/50 to-primary-900" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-primary-800 to-primary-900 rounded-3xl p-8 md:p-16 shadow-2xl border border-primary-700/50 relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 relative z-10">
             {translations.title}
           </h2>
-          <p className="text-lg text-indigo-100 mb-8">
+          <p className="text-xl text-primary-100 mb-10 max-w-2xl mx-auto relative z-10">
             {translations.subtitle}
           </p>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setIsValid(true);
-              }}
-              placeholder={translations.emailPlaceholder}
-              className={`flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white ${
-                !isValid ? 'ring-2 ring-red-300' : ''
-              }`}
-              aria-label={translations.emailPlaceholder}
-              required
-            />
-            <button
+
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10">
+            <div className="flex-1">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setIsValid(true);
+                }}
+                placeholder={translations.emailPlaceholder}
+                className={`w-full px-6 py-4 rounded-xl bg-white/10 border ${!isValid ? 'border-red-400' : 'border-white/20'
+                  } text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-400 backdrop-blur-sm transition-all`}
+                aria-label={translations.emailPlaceholder}
+                required
+              />
+              {!isValid && (
+                <p className="mt-2 text-sm text-red-300 text-left pl-2">Please enter a valid email address.</p>
+              )}
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
-              className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
+              className="px-8 py-4 rounded-xl bg-white text-primary-900 font-bold hover:bg-primary-50 transition-colors shadow-lg flex items-center justify-center gap-2"
             >
               {translations.button}
-            </button>
+              <Send className="w-4 h-4" />
+            </motion.button>
           </form>
-          {!isValid && (
-            <p className="mt-4 text-sm text-red-200">Please enter a valid email address.</p>
-          )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
