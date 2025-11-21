@@ -31,3 +31,4 @@ export default function Benefits({ translations }: BenefitsProps) {
   );
 }
 
+

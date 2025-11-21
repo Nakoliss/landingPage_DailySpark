@@ -66,3 +66,4 @@ export default function WaitlistCTA({ translations, waitlistUrl }: WaitlistCTAPr
   );
 }
 
+
