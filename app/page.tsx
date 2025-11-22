@@ -11,7 +11,7 @@ import WaitlistCTA from '@/components/WaitlistCTA';
 import Footer from '@/components/Footer';
 
 // TODO: Replace this placeholder URL with your actual Tally/Typeform/ConvertKit form URL
-const WAITLIST_URL = '#waitlist';
+const WAITLIST_URL = 'https://tally.so/r/D44RgR';
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('en');

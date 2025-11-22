@@ -40,7 +40,7 @@ export default function WaitlistCTA({ translations, waitlistUrl }: WaitlistCTAPr
           <div className="relative z-10">
             <TallyEmbed
               embedUrl={process.env.NEXT_PUBLIC_WAITLIST_EMBED_URL || ''}
-              fallbackUrl={process.env.NEXT_PUBLIC_WAITLIST_FALLBACK_URL || '#'}
+              fallbackUrl={waitlistUrl}
               fallbackButtonText={translations.button}
             />
           </div>
